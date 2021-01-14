@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+<<<<<<< HEAD
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var accessButton: UIButton!
@@ -19,6 +20,11 @@ class ViewController: UIViewController {
         accessButton.layer.cornerRadius = 20.0
         
         
+=======
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+>>>>>>> a3f43c644d3911c47716bfda0eadf3edac245f58
     }
 
 
