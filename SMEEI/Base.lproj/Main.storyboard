@@ -337,6 +337,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+		</view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
