@@ -9,10 +9,14 @@ import UIKit
 
 class ConsultViewController: UIViewController {
 
+
+    @IBOutlet weak var consultButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        consultButton.layer.cornerRadius = 20.0
+        
     }
     
 
