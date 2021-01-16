@@ -174,6 +174,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Registrarme"/>
+                                <connections>
+                                    <segue destination="ys0-XH-LuX" kind="show" id="HxK-aN-1D7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bNz-xr-Awv"/>
@@ -227,6 +230,9 @@
                                 <state key="normal" title="Consultar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="S5A-Pj-nrx" kind="show" id="fbJ-38-9kF"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fecha de inicio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXs-TW-ZvF">
                                 <rect key="frame" x="152" y="292" width="119" height="21"/>
@@ -299,8 +305,11 @@
                                 <state key="normal" image="bolt.fill" catalog="system"/>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Yoe-V6-wVS">
-                                <rect key="frame" x="70" y="321" width="292" height="66"/>
+                                <rect key="frame" x="152" y="321" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-62514505404">
+                                    <!--0020-01-01 11:36:36 +0000-->
+                                </date>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ueM-cl-SJS"/>
@@ -309,16 +318,17 @@
                     <navigationItem key="navigationItem" id="NQq-QY-fzl"/>
                     <connections>
                         <outlet property="consultButton" destination="rz8-Ur-m5c" id="5XH-fP-Ilk"/>
+                        <segue destination="S5A-Pj-nrx" kind="show" identifier="consultToChart" id="0SP-5A-kSK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMt-TL-T1x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2539" y="96"/>
         </scene>
-        <!--Item-->
+        <!--Barras-->
         <scene sceneID="E1i-XH-L0u">
             <objects>
-                <viewController id="OC1-7h-bJQ" sceneMemberID="viewController">
+                <viewController id="OC1-7h-bJQ" customClass="BarChartViewController" customModule="SMEEI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1gn-dP-Wq9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,11 +342,11 @@
                         <viewLayoutGuide key="safeArea" id="wNa-dP-N1u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="keyboard" catalog="system" id="ikY-um-FfG"/>
+                    <tabBarItem key="tabBarItem" title="Barras" image="chart.bar.fill" catalog="system" id="ikY-um-FfG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CjK-cD-LMK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4149.275362318841" y="103.79464285714285"/>
+            <point key="canvasLocation" x="4093" y="821"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nQZ-nH-0Tx">
@@ -368,25 +378,70 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="S5A-Pj-nrx" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Hzn-sd-UPa"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="25Z-k9-iQf">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.094117656349999995" green="0.50980395079999996" blue="0.57254904510000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="OC1-7h-bJQ" kind="relationship" relationship="viewControllers" id="KS0-5B-wt0"/>
+                        <segue destination="SbS-hh-6Zv" kind="relationship" relationship="viewControllers" id="Ix8-MO-jVu"/>
+                        <segue destination="cec-dO-SSK" kind="relationship" relationship="viewControllers" id="R6F-3K-kOl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBI-BN-PaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3239.130434782609" y="103.79464285714285"/>
         </scene>
+        <!--LineChart-->
+        <scene sceneID="kg6-8m-qZF">
+            <objects>
+                <viewController id="cec-dO-SSK" customClass="LineChartViewController" customModule="SMEEI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gUF-Sc-zTJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="pkE-bl-fMB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Line Chart" image="line.diagonal" catalog="system" id="hyJ-A1-RLu"/>
+                    <navigationItem key="navigationItem" title="LineChart" id="50Y-qO-1zO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bp5-8A-SCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4049" y="-548"/>
+        </scene>
+        <!--Pastel-->
+        <scene sceneID="jk6-YS-CDK">
+            <objects>
+                <viewController id="SbS-hh-6Zv" customClass="PieChartViewController" customModule="SMEEI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O6g-lj-CIg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YJ5-xS-rdy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Pastel" image="chart.pie.fill" catalog="system" id="c29-Yt-NLT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ns0-ag-kk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4067" y="96"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0SP-5A-kSK"/>
+        <segue reference="80f-zq-HDg"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
         <image name="building.columns" catalog="system" width="128" height="113"/>
         <image name="building.fill" catalog="system" width="108" height="128"/>
+        <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
+        <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
-        <image name="keyboard" catalog="system" width="128" height="79"/>
+        <image name="line.diagonal" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
