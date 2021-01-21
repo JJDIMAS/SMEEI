@@ -5,12 +5,10 @@ target 'SMEEI' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for SMEEI
-pod 'iOSDropDown'
-pod 'Firebase/Analytics'
-pod 'Firebase/Auth'
-pod 'Firebase'
-pod 'Firebase/Firestore'
-pod 'Firebase/Core'
-pod 'Charts'
+  # Graphics
+  pod 'iOSDropDown'
+  pod 'Charts'
+
+  # Firebase authentication
+  pod 'Firebase/Auth'
 end
