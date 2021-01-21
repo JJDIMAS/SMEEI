@@ -8,11 +8,19 @@
 import UIKit
 
 class ConsultViewController: UIViewController {
+    
+    var energyManagerObj = EnergyManager()
 
 
     @IBOutlet weak var consultButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Delegates
+        energyManagerObj.delegate = self
+        
+        // Test
+        energyManagerObj.fetchEntitiesInfo()
 
         // Do any additional setup after loading the view.
         consultButton.layer.cornerRadius = 20.0
@@ -30,4 +38,24 @@ class ConsultViewController: UIViewController {
     }
     */
 
+}
+
+extension ConsultViewController: EnergyManagerDelegate {
+    func updateEntitiesInfo(campuses: [Campus]) {
+        DispatchQueue.main.async {
+            print(campuses[0].id)
+        }
+    }
+    
+    func handleAPIError(errorMessage: String) {
+        DispatchQueue.main.async {
+            print("API ERROR?: \(errorMessage)")
+        }
+    }
+    
+    func handleDeviceError(errorMessage: String) {
+        DispatchQueue.main.async {
+            print("DEVICE ERROR?: \(errorMessage)")
+        }
+    }
 }

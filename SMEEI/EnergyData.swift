@@ -8,10 +8,6 @@
 import Foundation
 
 // Energy data
-struct EntitiesInfo: Codable {
-    let campuses: [Campus]
-}
-
 struct Campus: Codable {
     let id: Int
     let name: String

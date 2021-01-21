@@ -8,7 +8,7 @@
 import Foundation
 
 protocol EnergyManagerDelegate {
-    func updateEntitiesInfo(entities: EntitiesInfo)
+    func updateEntitiesInfo(campuses: [Campus])
     func handleAPIError(errorMessage: String)
     func handleDeviceError(errorMessage: String)
 }
@@ -55,7 +55,7 @@ struct EnergyManager {
         if let secureData = data {
             // Decode API JSON response
             if let entitiesInfoObj = self.parseEntitiesInfoJSON(entitiesInfoData: secureData) {
-                delegate?.updateEntitiesInfo(entities: entitiesInfoObj)
+                delegate?.updateEntitiesInfo(campuses: entitiesInfoObj)
             } else {
                 delegate?.handleAPIError(errorMessage: "The API data couldn't be get")
             }
@@ -63,12 +63,13 @@ struct EnergyManager {
     }
     
     
-    func parseEntitiesInfoJSON(entitiesInfoData: Data) -> EntitiesInfo?{
+    func parseEntitiesInfoJSON(entitiesInfoData: Data) -> [Campus]?{
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(EntitiesInfo.self, from: entitiesInfoData)
-            return decodedData
-        } catch {
+            let campuses = try decoder.decode([Campus].self, from: entitiesInfoData)
+            return campuses
+        } catch let error{
+            print(error.localizedDescription)
             return nil
         }
     }
