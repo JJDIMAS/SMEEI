@@ -29,7 +29,11 @@ class ConsultViewController: UIViewController {
         energyManagerObj.delegate = self
         
         // It makes an API request to get entities info, and delegates errors and response data.
-        energyManagerObj.fetchEntitiesInfo()
+        energyManagerObj.getEntitiesInfo()
+        
+        // It makes an API request to get logs info, and delegates errors and response data.
+        let logsRequestBodyObj = LogsRequestBody(date: "2020-10-10", period: "week", campus: 1, building: 2, circuit: 3)
+        energyManagerObj.getLogsInfo(requestBody: logsRequestBodyObj)
 
         // Do any additional setup after loading the view.
         consultButton.layer.cornerRadius = 20.0
@@ -72,6 +76,19 @@ extension ConsultViewController: EnergyManagerDelegate {
             self.CampusesDropDown.text = self.campuses[defaultIndex].name
             self.BuildingsDropDown.text = self.campuses[defaultIndex].buildings[defaultIndex].name
             self.CicuitsDropDown.text = self.campuses[defaultIndex].buildings[defaultIndex].circuits[defaultIndex].name
+        }
+    }
+    
+    func getLogsInfo(logs: Result) {
+        DispatchQueue.main.async {
+            // Handle logs response
+            print("Minimum of period: \(logs.total_result.minimum)")
+            print("Maxmimum of period: \(logs.total_result.maximum)")
+            print("Average of period: \(logs.total_result.average)")
+            
+            for average in logs.period_result {
+                print("Average per period item: \(average.average)")
+            }
         }
     }
     
