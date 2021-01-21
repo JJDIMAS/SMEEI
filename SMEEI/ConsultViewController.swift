@@ -7,10 +7,13 @@
 
 import UIKit
 
+import iOSDropDown
+
 class ConsultViewController: UIViewController {
     
+    @IBOutlet weak var CampusesDropDown: DropDown!
+    
     var energyManagerObj = EnergyManager()
-
 
     @IBOutlet weak var consultButton: UIButton!
     override func viewDidLoad() {
@@ -43,7 +46,10 @@ class ConsultViewController: UIViewController {
 extension ConsultViewController: EnergyManagerDelegate {
     func updateEntitiesInfo(campuses: [Campus]) {
         DispatchQueue.main.async {
-            print(campuses[0].id)
+            for campus in campuses {
+                self.CampusesDropDown.optionArray.append(campus.name)
+                self.CampusesDropDown.optionIds?.append(campus.id)
+            }
         }
     }
     

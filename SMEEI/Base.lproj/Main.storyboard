@@ -317,6 +317,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NQq-QY-fzl"/>
                     <connections>
+                        <outlet property="CampusesDropDown" destination="6H6-WG-wRJ" id="GcX-Cz-2a3"/>
                         <outlet property="consultButton" destination="rz8-Ur-m5c" id="5XH-fP-Ilk"/>
                         <segue destination="S5A-Pj-nrx" kind="show" identifier="consultToChart" id="0SP-5A-kSK"/>
                     </connections>
