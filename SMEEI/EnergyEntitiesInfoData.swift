@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Energy data
+// Entities info data (campuses)
 struct Campus: Codable {
     let id: Int
     let name: String

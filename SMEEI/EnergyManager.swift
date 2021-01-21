@@ -8,7 +8,7 @@
 import Foundation
 
 protocol EnergyManagerDelegate {
-    func updateEntitiesInfo(campuses: [Campus])
+    func getCampusesInfo(campuses: [Campus])
     func handleAPIError(errorMessage: String)
     func handleDeviceError(errorMessage: String)
 }
@@ -19,12 +19,10 @@ struct EnergyManager {
     
     let baseUrl = "http://148.216.17.36:8000/api/"
     
-    
     func fetchEntitiesInfo(){
         let url = "\(baseUrl)get-entities-info/"
         makeRequest(url: url, requested: "entitiesInfo")
     }
-    
     
     func makeRequest(url: String, requested: String) {
         // Create url
@@ -34,8 +32,8 @@ struct EnergyManager {
             
             var task: URLSessionDataTask
             
+            // Assign task to seesion
             if requested == "entitiesInfo" {
-                // Assign task to seesion
                 task = session.dataTask(with: url, completionHandler: handleEntitiesInfo(data:response:error:))
             } else {
                 return
@@ -53,18 +51,19 @@ struct EnergyManager {
         }
         
         if let secureData = data {
-            // Decode API JSON response
             if let entitiesInfoObj = self.parseEntitiesInfoJSON(entitiesInfoData: secureData) {
-                delegate?.updateEntitiesInfo(campuses: entitiesInfoObj)
+                delegate?.getCampusesInfo(campuses: entitiesInfoObj)
             } else {
                 delegate?.handleAPIError(errorMessage: "The API data couldn't be get")
             }
         }
     }
     
-    
     func parseEntitiesInfoJSON(entitiesInfoData: Data) -> [Campus]?{
+        // Decode API JSON response
+        
         let decoder = JSONDecoder()
+        
         do {
             let campuses = try decoder.decode([Campus].self, from: entitiesInfoData)
             return campuses
