@@ -14,6 +14,9 @@ class ConsultViewController: UIViewController {
     @IBOutlet weak var CampusesDropDown: DropDown!
     @IBOutlet weak var BuildingsDropDown: DropDown!
     @IBOutlet weak var CicuitsDropDown: DropDown!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     
     // This object allows us to access all the methods to access Energy API info and its delegates.
     var energyManagerObj = EnergyManager()
@@ -35,7 +38,6 @@ class ConsultViewController: UIViewController {
         
         // It makes an API request to get entities info, and delegates errors and response data.
         energyManagerObj.getEntitiesInfo()
-        
 
         // Do any additional setup after loading the view.
         consultButton.layer.cornerRadius = 20.0
@@ -44,7 +46,16 @@ class ConsultViewController: UIViewController {
     
     @IBAction func consultButton(_ sender: UIButton) {
         // It makes an API request to get logs info, and delegates errors and response data.
-        let logsRequestBodyObj = LogsRequestBody(date: "2020-10-10", period: "week", campus: 1, building: 2, circuit: 3)
+        var period: String
+        switch periodSegmentedControl.selectedSegmentIndex {
+        case 0:
+            period = "week"
+        case 1:
+            period = "month"
+        default:
+            period = "year"
+        }
+        let logsRequestBodyObj = LogsRequestBody(date: dateFormatter.string(from: datePicker.date) , period: period, campus: CampusesDropDown.selectedIndex!, building: BuildingsDropDown.selectedIndex!, circuit: 3) //CicuitsDropDown.selectedIndex!)
         energyManagerObj.getLogsInfo(requestBody: logsRequestBodyObj)
     }
 }
