@@ -19,4 +19,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         accessButton.layer.cornerRadius = 20.0
         }
+    @IBAction func accessButton(_ sender: UIButton) {
+        
     }
+}

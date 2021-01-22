@@ -57,6 +57,7 @@
                                 <size key="titleShadowOffset" width="6" height="0.0"/>
                                 <state key="normal" title="Acceder"/>
                                 <connections>
+                                    <action selector="accessButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sbn-7i-wig"/>
                                     <segue destination="ys0-XH-LuX" kind="show" id="80f-zq-HDg"/>
                                 </connections>
                             </button>
@@ -175,6 +176,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Registrarme"/>
                                 <connections>
+                                    <action selector="registerButton:" destination="8hd-ll-mH3" eventType="touchUpInside" id="rk1-TA-dWz"/>
                                     <segue destination="ys0-XH-LuX" kind="show" id="HxK-aN-1D7"/>
                                 </connections>
                             </button>
@@ -231,6 +233,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="consultButton:" destination="ys0-XH-LuX" eventType="touchUpInside" id="Lt2-rg-lN2"/>
                                     <segue destination="S5A-Pj-nrx" kind="show" id="fbJ-38-9kF"/>
                                 </connections>
                             </button>
@@ -435,7 +438,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0SP-5A-kSK"/>
-        <segue reference="80f-zq-HDg"/>
+        <segue reference="HxK-aN-1D7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>

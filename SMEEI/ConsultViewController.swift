@@ -18,12 +18,17 @@ class ConsultViewController: UIViewController {
     // This object allows us to access all the methods to access Energy API info and its delegates.
     var energyManagerObj = EnergyManager()
     
+    //Date format
+    var dateFormatter = DateFormatter()
+    
     // This variable contains nested info about campuses: It is a list of campuses, each campus has a list of buildings and each building has a list of circuits (see EnergyEntitiesInfoData.swift for more info).
     var campuses: [Campus] = []
 
     @IBOutlet weak var consultButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Set date format
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         // Delegates.
         energyManagerObj.delegate = self
@@ -31,12 +36,16 @@ class ConsultViewController: UIViewController {
         // It makes an API request to get entities info, and delegates errors and response data.
         energyManagerObj.getEntitiesInfo()
         
-        // It makes an API request to get logs info, and delegates errors and response data.
-        let logsRequestBodyObj = LogsRequestBody(date: "2020-10-10", period: "week", campus: 1, building: 2, circuit: 3)
-        energyManagerObj.getLogsInfo(requestBody: logsRequestBodyObj)
 
         // Do any additional setup after loading the view.
         consultButton.layer.cornerRadius = 20.0
+    }
+    
+    
+    @IBAction func consultButton(_ sender: UIButton) {
+        // It makes an API request to get logs info, and delegates errors and response data.
+        let logsRequestBodyObj = LogsRequestBody(date: "2020-10-10", period: "week", campus: 1, building: 2, circuit: 3)
+        energyManagerObj.getLogsInfo(requestBody: logsRequestBodyObj)
     }
 }
 
