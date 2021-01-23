@@ -26,11 +26,19 @@ class PieChartViewController: UIViewController, ChartViewDelegate {
         view.addSubview(pieChart)
         
         var entries = [ChartDataEntry]()
-        for x in 0..<10{
-            entries.append(ChartDataEntry(x: Double(x), y: Double(x)))
+        for x in 0..<dataEntries.count{
+            entries.append(ChartDataEntry(x: Double(x), y: Double(dataEntries[x].average)))
         }
         let set = PieChartDataSet(entries: entries)
         set.colors = ChartColorTemplates.material()
+        switch dataEntries.count {
+        case 7:
+            set.label = "Días"
+        case 4...5:
+            set.label = "Semanas"
+        default:
+            set.label = "Meses"
+        }
         let data = PieChartData(dataSet: set)
         pieChart.data = data
         

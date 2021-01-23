@@ -16,9 +16,6 @@ class LineChartViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
 
         lineChart.delegate = self
-        print("LineCV: \(dataEntries.count)")
-        //prueba.AllData()
-        //print("Mi view me dice: \(prueba.dataEntries)")
         // Do any additional setup after loading the view.
     }
     
@@ -30,11 +27,19 @@ class LineChartViewController: UIViewController, ChartViewDelegate {
         view.addSubview(lineChart)
         
         var entries = [ChartDataEntry]()
-        for x in 0..<10{
-            entries.append(ChartDataEntry(x: Double(x), y: Double(10)))
+        for x in 0..<dataEntries.count{
+            entries.append(ChartDataEntry(x: Double(x), y: Double(dataEntries[x].average)))
         }
         let set = LineChartDataSet(entries: entries)
         set.colors = ChartColorTemplates.material()
+        switch dataEntries.count {
+        case 7:
+            set.label = "Días"
+        case 4...5:
+            set.label = "Semanas"
+        default:
+            set.label = "Meses"
+        }
         let data = LineChartData(dataSet: set)
         lineChart.data = data
         

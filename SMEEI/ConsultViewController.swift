@@ -24,8 +24,6 @@ class ConsultViewController: UIViewController {
     //Date format
     var dateFormatter = DateFormatter()
     
-    var pruebaC = "Hola"
-    
     // This variable contains nested info about campuses: It is a list of campuses, each campus has a list of buildings and each building has a list of circuits (see EnergyEntitiesInfoData.swift for more info).
     var campuses: [Campus] = []
     var dataEntries : [Average] = []
@@ -70,8 +68,12 @@ class ConsultViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "consultToChart" {
             let destino = segue.destination as! UITabBarController
-            let ctrl = destino.viewControllers![0] as! BarChartViewController
-            ctrl.dataEntries = dataEntries
+            let barCtrl = destino.viewControllers![0] as! BarChartViewController
+            let PieCtrl = destino.viewControllers![1] as! PieChartViewController
+            let LineCtrl = destino.viewControllers![2] as! LineChartViewController
+            barCtrl.dataEntries = dataEntries
+            PieCtrl.dataEntries = dataEntries
+            LineCtrl.dataEntries = dataEntries
         }
     }
     
@@ -124,10 +126,10 @@ extension ConsultViewController: EnergyManagerDelegate {
             print("Maxmimum of period: \(logs.total_result.maximum)")
             print("Average of period: \(logs.total_result.average)")
             
-            
             for average in logs.period_result {
                 print("Average per period item: \(average.average)")
             }
+            
             self.performSegue(withIdentifier: "consultToChart", sender: self)
 
         }
