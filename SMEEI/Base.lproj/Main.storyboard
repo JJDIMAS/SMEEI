@@ -191,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GAp-2a-TXt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1758" y="104"/>
+            <point key="canvasLocation" x="1771" y="177"/>
         </scene>
         <!--Consult View Controller-->
         <scene sceneID="pNV-6V-Gmh">
@@ -234,7 +234,6 @@
                                 </state>
                                 <connections>
                                     <action selector="consultButton:" destination="ys0-XH-LuX" eventType="touchUpInside" id="Lt2-rg-lN2"/>
-                                    <segue destination="S5A-Pj-nrx" kind="show" id="fbJ-38-9kF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fecha de inicio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXs-TW-ZvF">
@@ -319,8 +318,8 @@
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoe-V6-wVS">
                                 <rect key="frame" x="152" y="321" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="633000661.71039104">
-                                    <!--2021-01-22 09:31:01 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="624011461.71039104">
+                                    <!--2020-10-10 08:31:01 +0000-->
                                 </date>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="-62514505404">
                                     <!--0020-01-01 11:36:36 +0000-->
@@ -338,7 +337,7 @@
                         <outlet property="consultButton" destination="rz8-Ur-m5c" id="5XH-fP-Ilk"/>
                         <outlet property="datePicker" destination="Yoe-V6-wVS" id="ExB-hJ-fI4"/>
                         <outlet property="periodSegmentedControl" destination="GlU-da-Ket" id="HFg-8b-e9H"/>
-                        <segue destination="S5A-Pj-nrx" kind="show" identifier="consultToChart" id="0SP-5A-kSK"/>
+                        <segue destination="S5A-Pj-nrx" kind="show" identifier="consultToChart" id="kfM-Ao-0zo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMt-TL-T1x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -451,8 +450,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0SP-5A-kSK"/>
-        <segue reference="HxK-aN-1D7"/>
+        <segue reference="80f-zq-HDg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>

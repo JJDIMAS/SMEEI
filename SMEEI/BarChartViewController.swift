@@ -10,6 +10,8 @@ import UIKit
 class BarChartViewController: UIViewController, ChartViewDelegate {
 
     var barChart = BarChartView()
+    var dataEntries : [Average] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         barChart.delegate = self

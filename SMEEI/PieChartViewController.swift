@@ -10,6 +10,8 @@ import UIKit
 class PieChartViewController: UIViewController, ChartViewDelegate {
 
     var pieChart = PieChartView()
+    var dataEntries : [Average] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pieChart.delegate = self

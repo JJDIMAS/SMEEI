@@ -10,11 +10,15 @@ import UIKit
 class LineChartViewController: UIViewController, ChartViewDelegate {
 
     var lineChart = LineChartView()
+    var dataEntries : [Average] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lineChart.delegate = self
 
+        lineChart.delegate = self
+        print("LineCV: \(dataEntries.count)")
+        //prueba.AllData()
+        //print("Mi view me dice: \(prueba.dataEntries)")
         // Do any additional setup after loading the view.
     }
     
@@ -27,7 +31,7 @@ class LineChartViewController: UIViewController, ChartViewDelegate {
         
         var entries = [ChartDataEntry]()
         for x in 0..<10{
-            entries.append(ChartDataEntry(x: Double(x), y: Double(x)))
+            entries.append(ChartDataEntry(x: Double(x), y: Double(10)))
         }
         let set = LineChartDataSet(entries: entries)
         set.colors = ChartColorTemplates.material()

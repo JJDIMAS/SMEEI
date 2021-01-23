@@ -24,12 +24,17 @@ class ConsultViewController: UIViewController {
     //Date format
     var dateFormatter = DateFormatter()
     
+    var pruebaC = "Hola"
+    
     // This variable contains nested info about campuses: It is a list of campuses, each campus has a list of buildings and each building has a list of circuits (see EnergyEntitiesInfoData.swift for more info).
     var campuses: [Campus] = []
+    var dataEntries : [Average] = []
+    
 
     @IBOutlet weak var consultButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Set date format
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -55,9 +60,21 @@ class ConsultViewController: UIViewController {
         default:
             period = "year"
         }
-        let logsRequestBodyObj = LogsRequestBody(date: dateFormatter.string(from: datePicker.date) , period: period, campus: CampusesDropDown.selectedIndex!, building: BuildingsDropDown.selectedIndex!, circuit: 3) //CicuitsDropDown.selectedIndex!)
+        //Clear out our data entries
+        //dataEntries.removeAll()
+       
+        let logsRequestBodyObj = LogsRequestBody(date: dateFormatter.string(from: datePicker.date) , period: period, campus: CampusesDropDown.selectedIndex!, building: BuildingsDropDown.selectedIndex!, circuit: 3)
         energyManagerObj.getLogsInfo(requestBody: logsRequestBodyObj)
+        // performSegue(withIdentifier: "consultToChart", sender: self)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "consultToChart" {
+            let destino = segue.destination as! UITabBarController
+            let ctrl = destino.viewControllers![0] as! BarChartViewController
+            ctrl.dataEntries = dataEntries
+        }
+    }
+    
 }
 
 extension ConsultViewController: EnergyManagerDelegate {
@@ -101,14 +118,18 @@ extension ConsultViewController: EnergyManagerDelegate {
     
     func getLogsInfo(logs: Result) {
         DispatchQueue.main.async {
+            self.dataEntries = logs.period_result
             // Handle logs response
             print("Minimum of period: \(logs.total_result.minimum)")
             print("Maxmimum of period: \(logs.total_result.maximum)")
             print("Average of period: \(logs.total_result.average)")
             
+            
             for average in logs.period_result {
                 print("Average per period item: \(average.average)")
             }
+            self.performSegue(withIdentifier: "consultToChart", sender: self)
+
         }
     }
     
