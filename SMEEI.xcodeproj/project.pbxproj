@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		051477B9F37765F743046B1B /* Pods_SMEEI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2165E3D73181270B796F259F /* Pods_SMEEI.framework */; };
+		5830CEFC25BC28C400521703 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5830CEFB25BC28C400521703 /* WidgetKit.framework */; };
+		5830CEFE25BC28C400521703 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5830CEFD25BC28C400521703 /* SwiftUI.framework */; };
+		5830CF0125BC28C400521703 /* Smeei_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830CF0025BC28C400521703 /* Smeei_Widget.swift */; };
+		5830CF0425BC28DC00521703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5830CF0325BC28DC00521703 /* Assets.xcassets */; };
+		5830CF0625BC28DC00521703 /* Smeei_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5830CF0225BC28C400521703 /* Smeei_Widget.intentdefinition */; };
+		5830CF0725BC28DC00521703 /* Smeei_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5830CF0225BC28C400521703 /* Smeei_Widget.intentdefinition */; };
+		5830CF0A25BC28DC00521703 /* Smeei_WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5830CEFA25BC28C400521703 /* Smeei_WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		58521D8925B93997006C8E50 /* EnergyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58521D8825B93997006C8E50 /* EnergyManager.swift */; };
 		58521D8C25B94103006C8E50 /* EnergyEntittiesMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58521D8B25B94103006C8E50 /* EnergyEntittiesMappers.swift */; };
 		6870D6E725B265D1005BBEDD /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6870D6E625B265D1005BBEDD /* LineChartViewController.swift */; };
@@ -23,9 +30,40 @@
 		68AB86D325A3EEEB00A5D83A /* ConsultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AB86D225A3EEEB00A5D83A /* ConsultViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5830CF0825BC28DC00521703 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68AAEC4F259C526600C2FDDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5830CEF925BC28C400521703;
+			remoteInfo = Smeei_WidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5830CF0E25BC28DC00521703 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5830CF0A25BC28DC00521703 /* Smeei_WidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2165E3D73181270B796F259F /* Pods_SMEEI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMEEI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39047C3C97B03D63AC3B026F /* Pods-SMEEI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMEEI.debug.xcconfig"; path = "Target Support Files/Pods-SMEEI/Pods-SMEEI.debug.xcconfig"; sourceTree = "<group>"; };
+		5830CEFA25BC28C400521703 /* Smeei_WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Smeei_WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5830CEFB25BC28C400521703 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5830CEFD25BC28C400521703 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5830CF0025BC28C400521703 /* Smeei_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smeei_Widget.swift; sourceTree = "<group>"; };
+		5830CF0225BC28C400521703 /* Smeei_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Smeei_Widget.intentdefinition; sourceTree = "<group>"; };
+		5830CF0325BC28DC00521703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5830CF0525BC28DC00521703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58521D8825B93997006C8E50 /* EnergyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyManager.swift; sourceTree = "<group>"; };
 		58521D8B25B94103006C8E50 /* EnergyEntittiesMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyEntittiesMappers.swift; sourceTree = "<group>"; };
 		6870D6E625B265D1005BBEDD /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +83,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5830CEF725BC28C400521703 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5830CEFE25BC28C400521703 /* SwiftUI.framework in Frameworks */,
+				5830CEFC25BC28C400521703 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68AAEC54259C526600C2FDDD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,10 +103,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5830CEFF25BC28C400521703 /* Smeei_Widget */ = {
+			isa = PBXGroup;
+			children = (
+				5830CF0025BC28C400521703 /* Smeei_Widget.swift */,
+				5830CF0225BC28C400521703 /* Smeei_Widget.intentdefinition */,
+				5830CF0325BC28DC00521703 /* Assets.xcassets */,
+				5830CF0525BC28DC00521703 /* Info.plist */,
+			);
+			path = Smeei_Widget;
+			sourceTree = "<group>";
+		};
 		68AAEC4E259C526600C2FDDD = {
 			isa = PBXGroup;
 			children = (
 				68AAEC59259C526600C2FDDD /* SMEEI */,
+				5830CEFF25BC28C400521703 /* Smeei_Widget */,
 				68AAEC58259C526600C2FDDD /* Products */,
 				C29443AC9729893E016AB7F8 /* Pods */,
 				D361007E2C3D675A746C2D74 /* Frameworks */,
@@ -70,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				68AAEC57259C526600C2FDDD /* SMEEI.app */,
+				5830CEFA25BC28C400521703 /* Smeei_WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				2165E3D73181270B796F259F /* Pods_SMEEI.framework */,
+				5830CEFB25BC28C400521703 /* WidgetKit.framework */,
+				5830CEFD25BC28C400521703 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,6 +177,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5830CEF925BC28C400521703 /* Smeei_WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5830CF0B25BC28DC00521703 /* Build configuration list for PBXNativeTarget "Smeei_WidgetExtension" */;
+			buildPhases = (
+				5830CEF625BC28C400521703 /* Sources */,
+				5830CEF725BC28C400521703 /* Frameworks */,
+				5830CEF825BC28C400521703 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smeei_WidgetExtension;
+			productName = Smeei_WidgetExtension;
+			productReference = 5830CEFA25BC28C400521703 /* Smeei_WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		68AAEC56259C526600C2FDDD /* SMEEI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68AAEC6B259C526B00C2FDDD /* Build configuration list for PBXNativeTarget "SMEEI" */;
@@ -124,10 +203,12 @@
 				68AAEC54259C526600C2FDDD /* Frameworks */,
 				68AAEC55259C526600C2FDDD /* Resources */,
 				759483E093E3A0A431764774 /* [CP] Embed Pods Frameworks */,
+				5830CF0E25BC28DC00521703 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5830CF0925BC28DC00521703 /* PBXTargetDependency */,
 			);
 			name = SMEEI;
 			productName = SMEEI;
@@ -143,6 +224,9 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					5830CEF925BC28C400521703 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 					68AAEC56259C526600C2FDDD = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -162,11 +246,20 @@
 			projectRoot = "";
 			targets = (
 				68AAEC56259C526600C2FDDD /* SMEEI */,
+				5830CEF925BC28C400521703 /* Smeei_WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5830CEF825BC28C400521703 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5830CF0425BC28DC00521703 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68AAEC55259C526600C2FDDD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +315,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5830CEF625BC28C400521703 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5830CF0625BC28DC00521703 /* Smeei_Widget.intentdefinition in Sources */,
+				5830CF0125BC28C400521703 /* Smeei_Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68AAEC53259C526600C2FDDD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +332,7 @@
 				6870D6E725B265D1005BBEDD /* LineChartViewController.swift in Sources */,
 				68AAEC5F259C526600C2FDDD /* ViewController.swift in Sources */,
 				68AAEC5B259C526600C2FDDD /* AppDelegate.swift in Sources */,
+				5830CF0725BC28DC00521703 /* Smeei_Widget.intentdefinition in Sources */,
 				58521D8925B93997006C8E50 /* EnergyManager.swift in Sources */,
 				68AAEC5D259C526600C2FDDD /* SceneDelegate.swift in Sources */,
 				6870D6ED25B26661005BBEDD /* BarChartViewController.swift in Sources */,
@@ -240,6 +343,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5830CF0925BC28DC00521703 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5830CEF925BC28C400521703 /* Smeei_WidgetExtension */;
+			targetProxy = 5830CF0825BC28DC00521703 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		68AAEC60259C526600C2FDDD /* Main.storyboard */ = {
@@ -261,6 +372,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5830CF0C25BC28DC00521703 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Smeei_Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.AntonHub.SMEEI.Smeei-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5830CF0D25BC28DC00521703 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Smeei_Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.AntonHub.SMEEI.Smeei-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		68AAEC69259C526B00C2FDDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -381,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39047C3C97B03D63AC3B026F /* Pods-SMEEI.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -400,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC7B86F3CD03230774F1D050 /* Pods-SMEEI.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -418,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5830CF0B25BC28DC00521703 /* Build configuration list for PBXNativeTarget "Smeei_WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5830CF0C25BC28DC00521703 /* Debug */,
+				5830CF0D25BC28DC00521703 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		68AAEC52259C526600C2FDDD /* Build configuration list for PBXProject "SMEEI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
