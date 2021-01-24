@@ -15,21 +15,19 @@ class ConsultViewController: UIViewController {
     @IBOutlet weak var BuildingsDropDown: DropDown!
     @IBOutlet weak var CicuitsDropDown: DropDown!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
+    @IBOutlet weak var consultButton: UIButton!
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     
     // This object allows us to access all the methods to access Energy API info and its delegates.
     var energyManagerObj = EnergyManager()
     
-    //Date format
+    // Date format
     var dateFormatter = DateFormatter()
     
     // This variable contains nested info about campuses: It is a list of campuses, each campus has a list of buildings and each building has a list of circuits (see EnergyEntitiesInfoData.swift for more info).
     var campuses: [Campus] = []
     var dataEntries : [Average] = []
     
-
-    @IBOutlet weak var consultButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +50,7 @@ class ConsultViewController: UIViewController {
     @IBAction func consultButton(_ sender: UIButton) {
         // It makes an API request to get logs info, and delegates errors and response data.
         var period: String
+        
         switch periodSegmentedControl.selectedSegmentIndex {
         case 0:
             period = "week"
@@ -60,22 +59,32 @@ class ConsultViewController: UIViewController {
         default:
             period = "year"
         }
-        //Clear out our data entries
-        //dataEntries.removeAll()
         
-        print("Something")
-       
+        let dateString = dateFormatter.string(from: datePicker.date)
+        let campusId = campuses[CampusesDropDown.selectedIndex!].id
+        let buildingId = campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].id
+        let circuitId = campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].circuits[CicuitsDropDown.selectedIndex!].id
+
+        requestFormData(period: period, date: dateString, campusId: campusId, buildingId: buildingId, circuitId: circuitId)
+        
+        UserDefaults.standard.set(period, forKey: "period")
+        UserDefaults.standard.set(dateString, forKey: "date")
+        UserDefaults.standard.set(campusId, forKey: "campusId")
+        UserDefaults.standard.set(buildingId, forKey: "buildingId")
+        UserDefaults.standard.set(circuitId, forKey: "circuitId")
+    }
+    
+    func requestFormData(period: String, date: String, campusId: Int, buildingId: Int, circuitId: Int) {
         // "Id" is the value that must be passed as parameter for campus, building and circuit.
         let logsRequestBodyObj = LogsRequestBody(
-            date: dateFormatter.string(from: datePicker.date),
+            date: date,
             period: period,
-            campus: campuses[CampusesDropDown.selectedIndex!].id,
-            building: campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].id,
-            circuit: campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].circuits[CicuitsDropDown.selectedIndex!].id
+            campus: campusId,
+            building: buildingId,
+            circuit: circuitId
         )
         
         energyManagerObj.getLogsInfo(requestBody: logsRequestBodyObj)
-        // performSegue(withIdentifier: "consultToChart", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -99,21 +108,7 @@ extension ConsultViewController: EnergyManagerDelegate {
             self.campuses = campuses
             
             // We'll select the first campus, its first building and its first circuit as the default values for the dropdowns (then, the user change this values by selecting items)
-            
-            // Default start index (just for the first time, then these are updated when user selects the items)
-            let defaultIndex = 0
-            
             self.updateCampusesDropdown()
-            
-            // Default dropdowns selected items (just for the first time, then these are updated when user selects the items)
-            self.CampusesDropDown.selectedIndex = defaultIndex
-            self.BuildingsDropDown.selectedIndex = defaultIndex
-            self.CicuitsDropDown.selectedIndex = defaultIndex
-            
-            // Default drodowns texts (just for the first time, then these are updated when user selects the items)
-            self.CampusesDropDown.text = self.campuses[defaultIndex].name
-            self.BuildingsDropDown.text = self.campuses[defaultIndex].buildings[defaultIndex].name
-            self.CicuitsDropDown.text = self.campuses[defaultIndex].buildings[defaultIndex].circuits[defaultIndex].name
         }
     }
     
@@ -164,15 +159,11 @@ extension ConsultViewController {
         CampusesDropDown.optionArray = campusesNames
         CampusesDropDown.optionIds = campusesIds
         
-        // Default dropdowns selected items (just for the first time, then these are updated when user selects the items)
+        // Update text in campuses dropdown
         CampusesDropDown.selectedIndex = 0
-
-        
-        // Set the default building to be seletect after filling the campuses dropdown values.
-        updateBuildingsDropdown(campusIndex: 0)
-        
-        // Default drodowns texts (just for the first time, then these are updated when user selects the items)
         self.CampusesDropDown.text = self.campuses[0].name
+
+        updateBuildingsDropdown(campusIndex: 0)
     }
     
     func updateBuildingsDropdown(campusIndex: Int) {
@@ -190,12 +181,12 @@ extension ConsultViewController {
         BuildingsDropDown.optionArray = buildingsNames
         BuildingsDropDown.optionIds = buildingsIds
         
+        // Update text in buldings dropdown
         self.BuildingsDropDown.selectedIndex = 0
+        self.BuildingsDropDown.text = self.campuses[campusIndex].buildings[0].name
         
         // Set the default circuit to be seletect after filling the buildings dropdown values.
         updateCircuitsDropdown(campusIndex: campusIndex, buildingIndex: 0)
-        
-        self.BuildingsDropDown.text = self.campuses[campusIndex].buildings[0].name
     }
     
     func updateCircuitsDropdown(campusIndex: Int, buildingIndex: Int) {
@@ -212,8 +203,8 @@ extension ConsultViewController {
         CicuitsDropDown.optionArray = circuitsNames
         CicuitsDropDown.optionIds = circuitsIds
         
+        // Update text in circuits dropdown
         self.CicuitsDropDown.selectedIndex = 0
-        
         self.CicuitsDropDown.text = self.campuses[campusIndex].buildings[buildingIndex].circuits[0].name
     }
     
@@ -231,6 +222,28 @@ extension ConsultViewController {
             print("(Dropdown) Building: \(selectedText), Index: \(index), Id: \(id)")
             print("(API Values) Building name: \(selectedBuilding.name), Campus id: \(selectedBuilding.id)")
             self.updateCircuitsDropdown(campusIndex: campusIndex, buildingIndex: index)
+        }
+    }
+}
+
+extension ConsultViewController {
+    // Shake gesture to automatically replay last request/query.
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?){
+        if motion == .motionShake {
+            print("Shake Gesture Detected")
+            
+            // If one key exists, all other keys should exist, so there is not need to test each.
+            if UserDefaults.standard.object(forKey: "period") != nil {
+                requestFormData(
+                    period: UserDefaults.standard.string(forKey: "period") ?? "",
+                    date: UserDefaults.standard.string(forKey: "date") ?? "",
+                    campusId: UserDefaults.standard.integer(forKey: "campusId"),
+                    buildingId: UserDefaults.standard.integer(forKey: "buildingId"),
+                    circuitId: UserDefaults.standard.integer(forKey: "circuitId")
+                )
+            } else {
+                print("You must make at least 1 query before using this feature.")
+            }
         }
     }
 }
