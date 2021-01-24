@@ -44,6 +44,8 @@ class ConsultViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         consultButton.layer.cornerRadius = 20.0
+        
+        setSelectionDropdownUpdated()
     }
     
     
@@ -60,11 +62,22 @@ class ConsultViewController: UIViewController {
         }
         //Clear out our data entries
         //dataEntries.removeAll()
+        
+        print("Something")
        
-        let logsRequestBodyObj = LogsRequestBody(date: dateFormatter.string(from: datePicker.date) , period: period, campus: CampusesDropDown.selectedIndex!, building: BuildingsDropDown.selectedIndex!, circuit: 3)
+        // "Id" is the value that must be passed as parameter for campus, building and circuit.
+        let logsRequestBodyObj = LogsRequestBody(
+            date: dateFormatter.string(from: datePicker.date),
+            period: period,
+            campus: campuses[CampusesDropDown.selectedIndex!].id,
+            building: campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].id,
+            circuit: campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].circuits[CicuitsDropDown.selectedIndex!].id
+        )
+        
         energyManagerObj.getLogsInfo(requestBody: logsRequestBodyObj)
         // performSegue(withIdentifier: "consultToChart", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "consultToChart" {
             let destino = segue.destination as! UITabBarController
@@ -76,7 +89,6 @@ class ConsultViewController: UIViewController {
             LineCtrl.dataEntries = dataEntries
         }
     }
-    
 }
 
 extension ConsultViewController: EnergyManagerDelegate {
@@ -88,30 +100,17 @@ extension ConsultViewController: EnergyManagerDelegate {
             
             // We'll select the first campus, its first building and its first circuit as the default values for the dropdowns (then, the user change this values by selecting items)
             
-            // Default start index
+            // Default start index (just for the first time, then these are updated when user selects the items)
             let defaultIndex = 0
             
-            for campus in self.campuses {
-                self.CampusesDropDown.optionArray.append(campus.name)
-                self.CampusesDropDown.optionIds?.append(campus.id)
-            }
+            self.updateCampusesDropdown()
             
-            for building in self.campuses[defaultIndex].buildings {
-                self.BuildingsDropDown.optionArray.append(building.name)
-                self.BuildingsDropDown.optionIds?.append(building.id)
-            }
-            
-            for circuit in self.campuses[defaultIndex].buildings[defaultIndex].circuits {
-                self.CicuitsDropDown.optionArray.append(circuit.name)
-                self.CicuitsDropDown.optionIds?.append(circuit.id)
-            }
-            
-            // Default selected items
+            // Default dropdowns selected items (just for the first time, then these are updated when user selects the items)
             self.CampusesDropDown.selectedIndex = defaultIndex
             self.BuildingsDropDown.selectedIndex = defaultIndex
             self.CicuitsDropDown.selectedIndex = defaultIndex
             
-            // Default text for the dropdowns
+            // Default drodowns texts (just for the first time, then these are updated when user selects the items)
             self.CampusesDropDown.text = self.campuses[defaultIndex].name
             self.BuildingsDropDown.text = self.campuses[defaultIndex].buildings[defaultIndex].name
             self.CicuitsDropDown.text = self.campuses[defaultIndex].buildings[defaultIndex].circuits[defaultIndex].name
@@ -146,6 +145,92 @@ extension ConsultViewController: EnergyManagerDelegate {
         DispatchQueue.main.async {
             // Properly implement "device" error
             print("DEVICE ERROR?: \(errorMessage)")
+        }
+    }
+}
+
+extension ConsultViewController {
+    func updateCampusesDropdown() {
+        // Campuses names and ids (as in the API to make a request)
+        var campusesNames: [String] = []
+        var campusesIds: [Int] = []
+        
+        for campus in campuses {
+            campusesNames.append(campus.name)
+            campusesIds.append(campus.id)
+        }
+        
+        // Set campuses dropdown info
+        CampusesDropDown.optionArray = campusesNames
+        CampusesDropDown.optionIds = campusesIds
+        
+        // Default dropdowns selected items (just for the first time, then these are updated when user selects the items)
+        CampusesDropDown.selectedIndex = 0
+
+        
+        // Set the default building to be seletect after filling the campuses dropdown values.
+        updateBuildingsDropdown(campusIndex: 0)
+        
+        // Default drodowns texts (just for the first time, then these are updated when user selects the items)
+        self.CampusesDropDown.text = self.campuses[0].name
+    }
+    
+    func updateBuildingsDropdown(campusIndex: Int) {
+        // Buildings names and ids (as in the API to make a request)
+        var buildingsNames: [String] = []
+        var buildingsIds: [Int] = []
+        
+        for building in campuses[campusIndex].buildings {
+            buildingsNames.append(building.name)
+            buildingsIds.append(building.id)
+            print("Building: \(building.name)")
+        }
+        
+        // Set buildings dropdown info
+        BuildingsDropDown.optionArray = buildingsNames
+        BuildingsDropDown.optionIds = buildingsIds
+        
+        self.BuildingsDropDown.selectedIndex = 0
+        
+        // Set the default circuit to be seletect after filling the buildings dropdown values.
+        updateCircuitsDropdown(campusIndex: campusIndex, buildingIndex: 0)
+        
+        self.BuildingsDropDown.text = self.campuses[campusIndex].buildings[0].name
+    }
+    
+    func updateCircuitsDropdown(campusIndex: Int, buildingIndex: Int) {
+        // Circuits names and ids (as in the API to make a request)
+        var circuitsNames: [String] = []
+        var circuitsIds: [Int] = []
+        
+        for circuit in campuses[campusIndex].buildings[buildingIndex].circuits {
+            circuitsNames.append(circuit.name)
+            circuitsIds.append(circuit.id)
+        }
+        
+        // Set circuits dropdown info
+        CicuitsDropDown.optionArray = circuitsNames
+        CicuitsDropDown.optionIds = circuitsIds
+        
+        self.CicuitsDropDown.selectedIndex = 0
+        
+        self.CicuitsDropDown.text = self.campuses[campusIndex].buildings[buildingIndex].circuits[0].name
+    }
+    
+    func setSelectionDropdownUpdated() {
+        CampusesDropDown.didSelect{(selectedText , index ,id) in
+            let selectedCampus = self.campuses[index]
+            print("(Dropdown) Campus: \(selectedText), Index: \(index), Id: \(id)")
+            print("(API Values) Campus name: \(selectedCampus.name), Campus id: \(selectedCampus.id)")
+            self.updateBuildingsDropdown(campusIndex: index)
+        }
+        
+        BuildingsDropDown.didSelect{(selectedText , index ,id) in
+            let campusIndex = self.CampusesDropDown.selectedIndex!
+            let selectedBuilding = self.campuses[campusIndex].buildings[index]
+            print("(Dropdown) Building: \(selectedText), Index: \(index), Id: \(id)")
+            print("(API Values) Building name: \(selectedBuilding.name), Campus id: \(selectedBuilding.id)")
+            self.updateCircuitsDropdown(campusIndex: campusIndex, buildingIndex: index)
         }
     }
 }
