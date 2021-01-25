@@ -30,9 +30,17 @@ class ConsultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Set search capabilitie off
+        CampusesDropDown.isSearchEnable = false
+        BuildingsDropDown.isSearchEnable = false
+        CicuitsDropDown.isSearchEnable = false
+    
         //Set date format
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        //Set maximium date as today
+        let date = Date()
+        datePicker.maximumDate = date
         
         // Delegates.
         energyManagerObj.delegate = self

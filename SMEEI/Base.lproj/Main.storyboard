@@ -324,6 +324,7 @@
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="-62514505404">
                                     <!--0020-01-01 11:36:36 +0000-->
                                 </date>
+                                <locale key="locale" localeIdentifier="es_MX"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ueM-cl-SJS"/>
