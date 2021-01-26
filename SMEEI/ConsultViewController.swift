@@ -123,34 +123,27 @@ extension ConsultViewController: EnergyManagerDelegate {
     func getLogsInfo(logs: Result) {
         DispatchQueue.main.async {
             self.dataEntries = logs.period_result
-            // Handle logs response
-            print("Minimum of period: \(logs.total_result.minimum)")
-            print("Maxmimum of period: \(logs.total_result.maximum)")
-            print("Average of period: \(logs.total_result.average)")
             //Store stats for widget feed
             UserDefaults.standard.set(logs.total_result.maximum, forKey: "max_value")
             UserDefaults.standard.set(logs.total_result.minimum, forKey: "min_value")
             UserDefaults.standard.set(logs.total_result.average, forKey: "average")
-            for average in logs.period_result {
-                print("Average per period item: \(average.average)")
-            }
-            
             self.performSegue(withIdentifier: "consultToChart", sender: self)
-
         }
     }
     
     func handleAPIError(errorMessage: String) {
         DispatchQueue.main.async {
-            // Properly implement API error
-            print("API ERROR?: \(errorMessage)")
+            let alert = UIAlertController(title: "Sin datos", message: "No se encontraron datos para la consulta realizada", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
     
     func handleDeviceError(errorMessage: String) {
         DispatchQueue.main.async {
-            // Properly implement "device" error
-            print("DEVICE ERROR?: \(errorMessage)")
+            let alert = UIAlertController(title: "Error", message: "Hubo un error con su dispositivo. Intente de nuevo", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
 }
@@ -185,7 +178,6 @@ extension ConsultViewController {
         for building in campuses[campusIndex].buildings {
             buildingsNames.append(building.name)
             buildingsIds.append(building.id)
-            print("Building: \(building.name)")
         }
         
         // Set buildings dropdown info
@@ -221,17 +213,11 @@ extension ConsultViewController {
     
     func setSelectionDropdownUpdated() {
         CampusesDropDown.didSelect{(selectedText , index ,id) in
-            let selectedCampus = self.campuses[index]
-            print("(Dropdown) Campus: \(selectedText), Index: \(index), Id: \(id)")
-            print("(API Values) Campus name: \(selectedCampus.name), Campus id: \(selectedCampus.id)")
             self.updateBuildingsDropdown(campusIndex: index)
         }
         
         BuildingsDropDown.didSelect{(selectedText , index ,id) in
             let campusIndex = self.CampusesDropDown.selectedIndex!
-            let selectedBuilding = self.campuses[campusIndex].buildings[index]
-            print("(Dropdown) Building: \(selectedText), Index: \(index), Id: \(id)")
-            print("(API Values) Building name: \(selectedBuilding.name), Campus id: \(selectedBuilding.id)")
             self.updateCircuitsDropdown(campusIndex: campusIndex, buildingIndex: index)
         }
     }
@@ -241,8 +227,6 @@ extension ConsultViewController {
     // Shake gesture to automatically replay last request/query.
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?){
         if motion == .motionShake {
-            print("Shake Gesture Detected")
-            
             // If one key exists, all other keys should exist, so there is not need to test each.
             if UserDefaults.standard.object(forKey: "period") != nil {
                 requestFormData(
@@ -253,7 +237,9 @@ extension ConsultViewController {
                     circuitId: UserDefaults.standard.integer(forKey: "circuitId")
                 )
             } else {
-                print("You must make at least 1 query before using this feature.")
+                let alert = UIAlertController(title: "Error", message: "Debe realizar al menos una consulta antes de utilizar esta función", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+                self.present(alert, animated: true)
             }
         }
     }
