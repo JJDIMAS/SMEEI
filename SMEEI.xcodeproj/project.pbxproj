@@ -66,6 +66,7 @@
 		5830CF0525BC28DC00521703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58521D8825B93997006C8E50 /* EnergyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyManager.swift; sourceTree = "<group>"; };
 		58521D8B25B94103006C8E50 /* EnergyEntittiesMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyEntittiesMappers.swift; sourceTree = "<group>"; };
+		58AB811D25BF848A00199EF4 /* SMEEI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SMEEI.entitlements; sourceTree = "<group>"; };
 		6870D6E625B265D1005BBEDD /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
 		6870D6E925B26603005BBEDD /* PieChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		6870D6EC25B26661005BBEDD /* BarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		68AAEC59259C526600C2FDDD /* SMEEI */ = {
 			isa = PBXGroup;
 			children = (
+				58AB811D25BF848A00199EF4 /* SMEEI.entitlements */,
 				68AAEC5A259C526600C2FDDD /* AppDelegate.swift */,
 				68AAEC5C259C526600C2FDDD /* SceneDelegate.swift */,
 				68AAEC5E259C526600C2FDDD /* ViewController.swift */,
@@ -535,6 +537,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SMEEI/SMEEI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SMEEI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -555,6 +558,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SMEEI/SMEEI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SMEEI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -127,7 +127,10 @@ extension ConsultViewController: EnergyManagerDelegate {
             print("Minimum of period: \(logs.total_result.minimum)")
             print("Maxmimum of period: \(logs.total_result.maximum)")
             print("Average of period: \(logs.total_result.average)")
-            
+            //Store stats for widget feed
+            UserDefaults.standard.set(logs.total_result.maximum, forKey: "max_value")
+            UserDefaults.standard.set(logs.total_result.minimum, forKey: "min_value")
+            UserDefaults.standard.set(logs.total_result.average, forKey: "average")
             for average in logs.period_result {
                 print("Average per period item: \(average.average)")
             }
