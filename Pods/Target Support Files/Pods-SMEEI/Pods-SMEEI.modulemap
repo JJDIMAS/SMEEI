@@ -1,6 +1,0 @@
-framework module Pods_SMEEI {
-  umbrella header "Pods-SMEEI-umbrella.h"
-
-  export *
-  module * { export * }
-}
