@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		051477B9F37765F743046B1B /* Pods_SMEEI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2165E3D73181270B796F259F /* Pods_SMEEI.framework */; };
 		5830CEFC25BC28C400521703 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5830CEFB25BC28C400521703 /* WidgetKit.framework */; };
 		5830CEFE25BC28C400521703 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5830CEFD25BC28C400521703 /* SwiftUI.framework */; };
 		5830CF0125BC28C400521703 /* Smeei_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830CF0025BC28C400521703 /* Smeei_Widget.swift */; };
@@ -55,8 +54,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2165E3D73181270B796F259F /* Pods_SMEEI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMEEI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		39047C3C97B03D63AC3B026F /* Pods-SMEEI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMEEI.debug.xcconfig"; path = "Target Support Files/Pods-SMEEI/Pods-SMEEI.debug.xcconfig"; sourceTree = "<group>"; };
 		5830CEFA25BC28C400521703 /* Smeei_WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Smeei_WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5830CEFB25BC28C400521703 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		5830CEFD25BC28C400521703 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -80,7 +77,6 @@
 		68AAEC68259C526B00C2FDDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68AB86CF25A3E1EC00A5D83A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		68AB86D225A3EEEB00A5D83A /* ConsultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultViewController.swift; sourceTree = "<group>"; };
-		CC7B86F3CD03230774F1D050 /* Pods-SMEEI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMEEI.release.xcconfig"; path = "Target Support Files/Pods-SMEEI/Pods-SMEEI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				051477B9F37765F743046B1B /* Pods_SMEEI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,8 +155,6 @@
 		C29443AC9729893E016AB7F8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				39047C3C97B03D63AC3B026F /* Pods-SMEEI.debug.xcconfig */,
-				CC7B86F3CD03230774F1D050 /* Pods-SMEEI.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -169,7 +162,6 @@
 		D361007E2C3D675A746C2D74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2165E3D73181270B796F259F /* Pods_SMEEI.framework */,
 				5830CEFB25BC28C400521703 /* WidgetKit.framework */,
 				5830CEFD25BC28C400521703 /* SwiftUI.framework */,
 			);
@@ -200,11 +192,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68AAEC6B259C526B00C2FDDD /* Build configuration list for PBXNativeTarget "SMEEI" */;
 			buildPhases = (
-				474586963845FC48EF6EDF67 /* [CP] Check Pods Manifest.lock */,
 				68AAEC53259C526600C2FDDD /* Sources */,
 				68AAEC54259C526600C2FDDD /* Frameworks */,
 				68AAEC55259C526600C2FDDD /* Resources */,
-				759483E093E3A0A431764774 /* [CP] Embed Pods Frameworks */,
 				5830CF0E25BC28DC00521703 /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -273,48 +263,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		474586963845FC48EF6EDF67 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SMEEI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		759483E093E3A0A431764774 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SMEEI/Pods-SMEEI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SMEEI/Pods-SMEEI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SMEEI/Pods-SMEEI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5830CEF625BC28C400521703 /* Sources */ = {
@@ -532,7 +480,6 @@
 		};
 		68AAEC6C259C526B00C2FDDD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39047C3C97B03D63AC3B026F /* Pods-SMEEI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -553,7 +500,6 @@
 		};
 		68AAEC6D259C526B00C2FDDD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC7B86F3CD03230774F1D050 /* Pods-SMEEI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
