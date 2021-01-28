@@ -58,7 +58,6 @@
                                 <state key="normal" title="Acceder"/>
                                 <connections>
                                     <action selector="accessButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sbn-7i-wig"/>
-                                    <segue destination="ys0-XH-LuX" kind="show" id="80f-zq-HDg"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ekr-la-9fj">
@@ -84,9 +83,6 @@
                                 <rect key="frame" x="233" y="680" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Regístrate"/>
-                                <connections>
-                                    <segue destination="8hd-ll-mH3" kind="show" id="aDS-EA-qvP"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -95,6 +91,8 @@
                     <navigationItem key="navigationItem" id="ghe-Qs-zn2"/>
                     <connections>
                         <outlet property="accessButton" destination="0vL-wX-ysf" id="zhC-Rx-bIO"/>
+                        <segue destination="8hd-ll-mH3" kind="show" identifier="MainToRegister" id="gbJ-LR-oMy"/>
+                        <segue destination="ys0-XH-LuX" kind="show" identifier="MainToConsult" id="ABZ-jE-PGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -177,7 +175,6 @@
                                 <state key="normal" title="Registrarme"/>
                                 <connections>
                                     <action selector="registerButton:" destination="8hd-ll-mH3" eventType="touchUpInside" id="rk1-TA-dWz"/>
-                                    <segue destination="ys0-XH-LuX" kind="show" id="HxK-aN-1D7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,12 +183,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="6oY-wu-FMH"/>
                     <connections>
+                        <outlet property="mailTextField" destination="uDU-5P-fDE" id="Ms8-K3-vVG"/>
+                        <outlet property="nameTextField" destination="NwA-lW-RWO" id="8Jr-VB-bli"/>
+                        <outlet property="passwordTextField" destination="sLT-dX-4eK" id="g3X-yb-tk2"/>
                         <outlet property="registerButton" destination="Ttn-Gm-2XY" id="JXI-LX-PRf"/>
+                        <segue destination="ys0-XH-LuX" kind="show" identifier="RegisterToConsult" id="fJH-a0-2w7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GAp-2a-TXt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1771" y="177"/>
+            <point key="canvasLocation" x="1816" y="115"/>
         </scene>
         <!--Consult View Controller-->
         <scene sceneID="pNV-6V-Gmh">
@@ -451,7 +452,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="80f-zq-HDg"/>
+        <segue reference="fJH-a0-2w7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.fill" catalog="system" width="101" height="128"/>
