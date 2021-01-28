@@ -12,8 +12,12 @@ import FirebaseAuth
 class ViewController: UIViewController {
 
 
-    @IBOutlet weak var mailTextField: UITextField!
+
+  
+   
+   
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var accessButton: UIButton!
 
     override func viewDidLoad() {
@@ -54,6 +58,9 @@ class ViewController: UIViewController {
                    }
                 }
     
+    @IBAction func registerButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "MainToRegister", sender: self)
+    }
     func alerta(mensaje : String){
         let alerta = UIAlertController(title: "Error", message: "Verifica los datos proporcionados. \n \(mensaje)", preferredStyle: .alert)
         let accion = UIAlertAction(title: "Aceptar", style: .default, handler: nil)

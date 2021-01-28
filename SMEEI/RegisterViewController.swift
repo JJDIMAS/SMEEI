@@ -40,7 +40,7 @@ class RegisterViewController: UIViewController {
                         
                     }else{
                         //Ya podemos registrar el usuario
-                        self.performSegue(withIdentifier: "menuPrincipal", sender: self)
+                        self.performSegue(withIdentifier: "RegisterToConsult", sender: self)
                         
                     }
                 }
