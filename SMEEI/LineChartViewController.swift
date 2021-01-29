@@ -9,14 +9,21 @@ import UIKit
 
 class LineChartViewController: UIViewController, ChartViewDelegate {
 
+
     var lineChart = LineChartView()
     var dataEntries : [Average] = []
+    var dataDescription : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         lineChart.delegate = self
         lineChart.animate(xAxisDuration: 2.5)
-        // Do any additional setup after loading the view.
+        //Setting Description
+        lineChart.chartDescription?.text = dataDescription
+        lineChart.chartDescription?.font = UIFont(name: "Futura", size: 15)!
+        lineChart.chartDescription?.xOffset = lineChart.frame.width + 140
+        lineChart.chartDescription?.yOffset = 350
+        lineChart.chartDescription?.textAlign = NSTextAlignment.center
     }
     
     override func viewDidLayoutSubviews() {
@@ -25,6 +32,7 @@ class LineChartViewController: UIViewController, ChartViewDelegate {
         lineChart.frame = CGRect(x:0, y:0, width: self.view.frame.size.width, height: self.view.frame.size.width)
         lineChart.center = view.center
         view.addSubview(lineChart)
+        view.sendSubviewToBack(lineChart)
         
         var entries = [ChartDataEntry]()
         for x in 0..<dataEntries.count{

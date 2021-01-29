@@ -336,7 +336,14 @@
                         <viewLayoutGuide key="safeArea" id="ueM-cl-SJS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="NQq-QY-fzl"/>
+                    <navigationItem key="navigationItem" id="NQq-QY-fzl">
+                        <barButtonItem key="rightBarButtonItem" title="Cerrar sesión" image="square.and.arrow.up" catalog="system" id="YLf-IB-Dhb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="LogOut:" destination="ys0-XH-LuX" id="sU6-bE-5D0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="BuildingsDropDown" destination="pO8-cM-n7F" id="qP5-AI-VQT"/>
                         <outlet property="CampusesDropDown" destination="6H6-WG-wRJ" id="GcX-Cz-2a3"/>
@@ -363,6 +370,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.094117656349999995" green="0.50980395079999996" blue="0.57254904510000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wNa-dP-N1u"/>
@@ -453,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ns0-ag-kk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4067" y="96"/>
+            <point key="canvasLocation" x="4066.666666666667" y="95.758928571428569"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -470,6 +478,7 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

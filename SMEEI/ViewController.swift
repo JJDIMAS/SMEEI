@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         accessButton.layer.cornerRadius = 20.0
-        
+        ValidarSesion()
         }
     func ValidarSesion(){
         if Auth.auth().currentUser != nil {

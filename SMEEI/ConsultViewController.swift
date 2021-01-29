@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 import iOSDropDown
 
 class ConsultViewController: UIViewController {
@@ -23,6 +23,9 @@ class ConsultViewController: UIViewController {
     
     // Date format
     var dateFormatter = DateFormatter()
+    
+    //Chart description
+    var chartLabel : String?
     
     // This variable contains nested info about campuses: It is a list of campuses, each campus has a list of buildings and each building has a list of circuits (see EnergyEntitiesInfoData.swift for more info).
     var campuses: [Campus] = []
@@ -54,6 +57,15 @@ class ConsultViewController: UIViewController {
         setSelectionDropdownUpdated()
     }
     
+    @IBAction func LogOut(_ sender: UIBarButtonItem) {
+        let firebaseAuth = Auth.auth()
+                do {
+                    try firebaseAuth.signOut()
+                    navigationController?.popToRootViewController(animated: true)
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                    }
+    }
     
     @IBAction func consultButton(_ sender: UIButton) {
         // It makes an API request to get logs info, and delegates errors and response data.
@@ -72,7 +84,7 @@ class ConsultViewController: UIViewController {
         let campusId = campuses[CampusesDropDown.selectedIndex!].id
         let buildingId = campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].id
         let circuitId = campuses[CampusesDropDown.selectedIndex!].buildings[BuildingsDropDown.selectedIndex!].circuits[CicuitsDropDown.selectedIndex!].id
-
+        chartLabel = dateString
         requestFormData(period: period, date: dateString, campusId: campusId, buildingId: buildingId, circuitId: circuitId)
         
         UserDefaults.standard.set(period, forKey: "period")
@@ -104,6 +116,20 @@ class ConsultViewController: UIViewController {
             barCtrl.dataEntries = dataEntries
             PieCtrl.dataEntries = dataEntries
             LineCtrl.dataEntries = dataEntries
+            switch periodSegmentedControl.selectedSegmentIndex {
+            case 0:
+                barCtrl.dataDescription = "Registro diario desde \(chartLabel ?? "?")"
+                PieCtrl.dataDescription = "Registro diario desde \(chartLabel ?? "?")"
+                LineCtrl.dataDescription = "Registro diario desde \(chartLabel ?? "?")"
+            case 1:
+                barCtrl.dataDescription = "Registro semanal desde \(chartLabel ?? "?")"
+                PieCtrl.dataDescription = "Registro semanal desde \(chartLabel ?? "?")"
+                LineCtrl.dataDescription = "Registro semanal desde \(chartLabel ?? "?")"
+            default:
+                barCtrl.dataDescription = "Registro mensual desde \(chartLabel ?? "?")"
+                PieCtrl.dataDescription = "Registro mensual desde \(chartLabel ?? "?")"
+                LineCtrl.dataDescription = "Registro mensual desde \(chartLabel ?? "?")"
+            }
         }
     }
 }

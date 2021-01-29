@@ -9,14 +9,21 @@ import UIKit
 
 class BarChartViewController: UIViewController, ChartViewDelegate {
 
+    
     var barChart = BarChartView()
     var dataEntries : [Average] = []
+    var dataDescription : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         barChart.delegate = self
         barChart.animate(xAxisDuration: 2.5)
-        // Do any additional setup after loading the view.
+        //Setting chartDescription
+        barChart.chartDescription?.text = dataDescription
+        barChart.chartDescription?.font = UIFont(name: "Futura", size: 15)!
+        barChart.chartDescription?.xOffset = barChart.frame.width + 140
+        barChart.chartDescription?.yOffset = 350
+        barChart.chartDescription?.textAlign = NSTextAlignment.center
     }
 
     override func viewDidLayoutSubviews() {
