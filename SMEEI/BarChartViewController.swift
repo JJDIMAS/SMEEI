@@ -15,6 +15,7 @@ class BarChartViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         barChart.delegate = self
+        barChart.animate(xAxisDuration: 2.5)
         // Do any additional setup after loading the view.
     }
 

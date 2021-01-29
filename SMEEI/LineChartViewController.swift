@@ -14,8 +14,8 @@ class LineChartViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         lineChart.delegate = self
+        lineChart.animate(xAxisDuration: 2.5)
         // Do any additional setup after loading the view.
     }
     

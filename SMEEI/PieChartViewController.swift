@@ -15,7 +15,7 @@ class PieChartViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         pieChart.delegate = self
-        // Do any additional setup after loading the view.
+        pieChart.animate(xAxisDuration: 2.5)        // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {
